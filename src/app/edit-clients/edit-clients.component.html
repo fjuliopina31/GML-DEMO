@@ -1,0 +1,98 @@
+<div class="container">
+  <div class="row">
+    <div class="col m1 l1"></div>
+    <div class="col m5 l11">
+      <br>
+      <button class="btn waves-effect waves-light btn-small" type="button" (click)="showCreateClient()">Add new Client
+        <i class="material-icons right">add</i>
+      </button>
+      &nbsp; &nbsp; 
+      <button *ngIf="showBtnCancel" class="btn waves-effect waves-light red btn-small" type="button" (click)="viewForDefault()">Cancel
+        <i class="material-icons right">cancel</i>
+      </button>
+      <form *ngIf="showSearchForm">
+        <div class="input-field">
+          <input id="txtSharedKey" [(ngModel)]="sharedKeySearch" (ngModelChange)="validateField(sharedKeySearch)"  name="sharedKey" type="text" class="validate">
+          <label for="txtSharedKey">Shared Key</label>
+        </div>
+        <button class="btn waves-effect waves-light btn-small" type="button" (click)="getClient(sharedKeySearch)">Find
+          <i class="material-icons right">search</i>
+        </button>
+      </form>
+      <table class="striped" *ngIf="showListClient">
+        <thead>
+          <tr>
+            <th>Shard Key</th>
+            <th>Business ID</th>
+            <th>E-mail</th>
+            <th>Phone</th>
+            <th>Date Added</th>
+          </tr>
+        </thead>
+
+        <tbody *ngFor="let client of listClient" >
+          <tr>
+            <td>{{client.sharedKey}}</td>
+            <td>{{client.name}}</td>
+            <td>{{client.email}}</td>
+            <td>{{client.phone}}</td>
+            <td>{{client.startDate}}</td>
+            <td>
+              <button class="btn waves-effect waves-light btn-small" type="button" style="margin-right: 5px;"
+                (click)="showMovieforEdit(client.id)">Edit
+                <i class="material-icons right">edit</i>
+              </button>
+              <button class="btn waves-effect waves-light btn-small" type="button"
+                >Delete
+                <i class="material-icons right">delete</i>
+              </button>
+
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <br>
+
+
+      <!------------------- CARD FOR ADD A MOVIE--------------------->
+      <div class="card" *ngIf="showCardAdd">
+        <div class="card-content">
+          <span class="card-title">Add new client</span>
+          <form>
+            <div class="input-field">
+              <input [(ngModel)]="client.sharedKey" id="txtSharedKey" name="sharedKey" type="text" class="validate">
+              <label for="txtSharedKey">Shared Key</label>
+            </div>
+            <div class="input-field">
+              <input [(ngModel)]="client.name" id="txtName" name="name" type="text" class="validate">
+              <label for="txtName">Business ID</label>
+            </div>
+            <div class="input-field">
+              <input [(ngModel)]="client.email" id="txtEmail" name="email" type="text" class="validate">
+              <label for="txtEmail">E-Mail</label>
+            </div>
+            <div class="input-field">
+              <input [(ngModel)]="client.phone" id="txtPhone" name="phone" type="text" class="validate">
+              <label for="txtPhone">Phone</label>
+            </div>
+            <div class="input-field">
+              <input [(ngModel)]="client.startDate" id="txtStartDate" name="startDate" type="date" class="validate">
+              <label for="txtStartDate">Start Date</label>
+            </div>
+            <div class="input-field">
+              <input [(ngModel)]="client.endDate" id="txtEndDate" name="endDate" type="date" class="validate">
+              <label for="txtEndDate">End Date</label>
+            </div>
+            
+
+            <button class="btn waves-effect waves-light btn-small" type="button" (click)="addClient()">Save changes
+              <i class="material-icons right">save</i>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
