@@ -1,0 +1,25 @@
+<nav>
+  <div class="nav-wrapper">
+    <a data-target="slide-out" class="sidenav-trigger "><i class="material-icons">menu</i></a>
+    <a href="/home" class="brand-logo center">GML DEMO</a>
+  </div>
+</nav>
+<ul id="slide-out" class="sidenav  sidenav-fixed">
+  <li (click)="navigate(1)"><a style="color: whitesmoke!important;"><i class="material-icons">house</i>Alianza</a></li>
+  <li>
+    <div class="divider"></div>
+  </li>
+  <li (click)="navigate(2)"><a style="color: whitesmoke!important;"><i class="material-icons">group</i>Clients</a></li>
+  <li><a style="color: whitesmoke!important;">Client look history</a>
+  </li>
+  <li><a style="color: whitesmoke!important;">Emergency PIN configuration</a>
+  <li><a style="color: whitesmoke!important;">Emergency PIN history</a>
+
+</ul>
+
+<script>
+  var elems = document.querySelectorAll('.sidenav');
+  var instances = M.Sidenav.init(elems);
+</script>
+<app-client-list *ngIf="this.showClient"></app-client-list>
+<app-edit-clients *ngIf="this.showEditClients"></app-edit-clients>
